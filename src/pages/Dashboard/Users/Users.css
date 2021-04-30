@@ -1,0 +1,8 @@
+.users { 
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  left: 15%;
+  right: 15%;
+  text-align: center;
+}

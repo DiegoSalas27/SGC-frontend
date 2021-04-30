@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+html {
+  min-height:100%;/* make sure it is at least as tall as the viewport */
+  position:relative;
+}
+
+body{
+  height:100%; /* force the BODY element to match the height of the HTML element */
+}
+.app {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  background-image: url("./assets/img/login-background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+ /* forms */
+
+.authForm {
+  margin-left: 300px;
+  margin-top: 45px;
+}
+
+.authForm input {
+  margin-top: 80px;
+  border: none;
+  border-bottom: #888888 1px solid;
+  font-size: 16px;
+  width: 300px;
+}
+
+.error {
+  position: absolute;
+  margin-top: 5px;
+  color: red;
+  font-size: 0.8em;
+}
+
+ /* end forms */
+
+.link-text {
+  color: #00A3FF;
+  cursor: pointer;
+}
+
+.subtitle {
+  font-size: 14px;
+}
+
+input:focus, button:focus, button:active {
+  outline: 0;
+}
+
+.bottom-panel {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 60px;
+  margin-top: 100px;
+}
+
+.bottom-panel button {
+  color: #fff;
+  outline: 0;
+  border: none;
+  background: #60d860;
+  border-radius: 7%;
+  padding: 10px 20px;
+  transition: all 1s;
+}
+
+.bottom-panel button:hover {
+  background: green;
+  cursor: pointer;
+}
+
+.logoBar {
+  position: absolute;
+	top: 50px;
+	bottom: 13%;
+	left: 0;
+	right: 420px;
+  margin: auto;
+  height: 600px;
+  width: 280px;
+  background: #60d860;
+  border-radius: 5px;
+}
+
+.logoBar img {
+  position: absolute;
+  top: 260px;
+  left: 40px;
+  border-radius: 10%;
+}
+
+.logoBar::before {
+  position: relative;
+  display: block;
+  content: "";
+  top: 220px;
+  left: 20px;
+  height: 170px;
+  width: 250px;
+  border-radius: 50%;
+  background-color: #fff;
+  transform: rotate(-45deg); /* Equal to rotateZ(45deg) */
+}
+
+.section-container {
+  display: block;
+  background-color: white;
+  box-shadow: 0 1px 17px #888888;
+  border-color: rgba(0, 0, 0, 0.1);
+  padding: 2px 16px;
+  height: fit-content;
+  position: relative;
+  max-width: 700px;
+  border-radius: 5px;
+}
+
+.center {
+  position: absolute;
+	top: 50px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+.h-500 {
+  min-height: 500px;
+}
+
+/* maring */
+
+.mt-1 {
+  margin-top: 1rem !;
+}
+.mt-2 {
+  margin-top: 2rem;
+}
+.mt-3 {
+  margin-top: 3rem;
+}
+
+/* Flex */
+
+.flex-input {
+  display: flex;
+}
+
+.flex-input span {
+  margin-top: 14px;
+}
+
+.flex-input .error {
+  position: relative !important;
+  margin-top: 0 !important;
+  margin-left: 30px !important;
+}

@@ -1,0 +1,26 @@
+.dashboard-container {
+  position: relative;
+}
+
+.main-panel {
+  z-index: 0;
+  top: 140px;
+  left: 140px;
+  height: calc(100vh - 140px);
+  width: calc(100vw - 140px);
+  position: relative;
+}
+
+.main-panel .admin-start {
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  left: 15%;
+  right: 15%;
+  text-align: center;
+}
+
+.main-panel img {
+  width: 400px;
+  height: 400px;
+}

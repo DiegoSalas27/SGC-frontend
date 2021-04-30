@@ -1,0 +1,88 @@
+.modal {
+  position: fixed;
+  z-index: 500;
+  background-color: white;
+  width: 70%;
+  border: 1px solid #ccc;
+  box-shadow: 10px 9px 20px #bababa;
+  padding: 50px 16px;
+  left: 15%;
+  top: 30%;
+  box-sizing: border-box;
+  transition: all 1s ease;
+  border-radius: 5px;
+  height: fit-content;
+}
+
+.modalHeader {
+  text-align: center;
+}
+
+.modalFooter {
+  display: flex;
+  align-items: center;  
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.modalFooter button{
+  margin: 0 30px;
+  color: #fff;
+  outline: 0;
+  border: none;
+  background: #60d860;
+  border-radius: 7%;
+  padding: 5px 20px;
+  transition: all 1s;
+  cursor: pointer;
+}
+
+.modalFooter button:hover {
+  background: green;
+}
+
+.modalForm {
+  margin-top: 10px;
+}
+
+.modalForm .error {
+  position: relative !important;
+  margin-top: 0 !important;
+  margin-left: 30px !important;
+}
+
+.modalForm input {
+  border: none;
+  border-bottom: #888888 1px solid;
+  font-size: 16px;
+  width: 80%;
+  margin: 10px 30px;
+}
+
+.modalForm .button-stack {
+  width: 80%;
+  margin: 10px 30px;
+}
+
+.modalForm .button-stack input {
+  width: 50px;
+  margin: 5px 0;
+  margin-left: -20px;
+}
+
+.modalForm .button-stack div {
+  display: flex;
+  margin: 10px 0;
+}
+
+.deleteFormTitle {
+  text-align: center;
+}
+
+
+@media (min-width: 600px) {
+  .modal {
+      width: 500px;
+      left: calc(50% - 250px);
+  }
+}

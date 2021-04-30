@@ -1,0 +1,25 @@
+.truck {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  border-bottom: #c5c5c5 2px solid;
+  padding: 15px 0;
+}
+
+.truck-info {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.options img {
+  padding-top: 24px;
+  width: 22px !important;
+  height: 45px !important;
+  cursor: pointer;
+}
+
+.entityIconTruck {
+  width: 170px !important;
+  height: 170px !important;
+}

@@ -1,0 +1,8 @@
+.flex-input {
+  margin-left: -25px !important;
+}
+
+.flex-input.col {
+  margin-left: -228px !important;
+  flex-direction: column;
+}
