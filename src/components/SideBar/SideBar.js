@@ -40,11 +40,11 @@ const SideBar = ({ userLogout, userRol }) => {
                 <img src={truck} width="40" /> Camión recolector
               </li>
             </Link>
-            <Link className="nav-link" to="/main/dashboard">
+            {/* <Link className="nav-link" to="/main/dashboard">
               <li>
                 <img src={dashboard} width="40" /> Dashboard
               </li>
-            </Link>
+            </Link> */}
           </>
         )}
         <Link className="nav-link" to="/main/map">

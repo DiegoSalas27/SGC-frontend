@@ -1,16 +1,16 @@
-import { useField } from 'formik';
+import { useField } from "formik";
 
-const CustomTextInput = ({...props}) => {
+const CustomTextInput = ({ ...props }) => {
   const [field, meta] = useField(props);
 
-  return(
+  return (
     <div>
-      <input disabled={!!props.disable} className="text-input" {...field} {...props} />
+      <input disabled={!!props.disable} {...field} {...props} />
       {meta.touched && meta.error ? (
         <div className="error">{meta.error}</div>
       ) : null}
     </div>
-  )
-} 
+  );
+};
 
 export default CustomTextInput;

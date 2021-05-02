@@ -79,6 +79,11 @@
   text-align: center;
 }
 
+.modal-content-text {
+  margin-top: 20px;
+  text-align: center;
+}
+
 
 @media (min-width: 600px) {
   .modal {

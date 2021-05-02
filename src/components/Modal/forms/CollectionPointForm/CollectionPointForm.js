@@ -34,7 +34,7 @@ const CollectionForm = ({
 
   async function submitHandler(values, setSubmitting, resetForm) {
     let entity = { ...values };
-    entity = { ...entity, typePoint: radio };
+    entity = { ...entity, typePoint: 3 };
     let response;
     try {
       if (editEntity) {
@@ -48,7 +48,7 @@ const CollectionForm = ({
       setSubmitting(false);
       setError(null);
       setOperationResponse(response);
-      modalClose();
+      modalClose("Punto de acopio creado correctamente");
     } catch (err) {
       setSubmitting(false);
       setError(err.response.data.error);
@@ -69,7 +69,12 @@ const CollectionForm = ({
         altura: entity ? (entity.altura ? entity.altura : "") : "",
       }}
       validationSchema={Yup.object({
-        name: Yup.string().required("Este campo es obligatorio"),
+        name: Yup.string()
+          .required("Este campo es obligatorio")
+          .min(
+            40,
+            "El nombre de punto de acopio debe contener por lo menos 40 caracteres"
+          ),
         longitude: Yup.string().required("Este campo es obligatorio"),
         latitude: Yup.string().required("Este campo es obligatorio"),
         area: Yup.string().required("Este campo es obligatorio"),
@@ -122,7 +127,7 @@ const CollectionForm = ({
               m<sup>2</sup>
             </span>
           </div>
-          <div className="button-stack">
+          {/* <div className="button-stack">
             <div>
               <input
                 type="radio"
@@ -153,7 +158,7 @@ const CollectionForm = ({
               />{" "}
               Acopio
             </div>
-          </div>
+          </div> */}
           {error && <div className="error mt-3">{error}</div>}
           <div className="modalFooter">
             <button type="submit">

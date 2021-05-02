@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import user from "../../assets/img/user.png";
 import Modal from "../Modal/Modal";
 import "./NavBar.css";
+import MessageModal from "../Modal/MessageModal";
 
 const NavBar = ({
   userName,
@@ -20,6 +21,8 @@ const NavBar = ({
   const [showCrudButtons, setShowCrudButtons] = useState(false);
   const [showWatchRoute, setWatchRoute] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [showAlertModal, setShowAlertModal] = useState(false);
+  const [alertMessage, setAlertMessage] = useState(null);
   const [operation, setOperation] = useState("create");
   const [option, setOption] = useState("");
   const location = useLocation();
@@ -117,6 +120,11 @@ const NavBar = ({
           <span className="subtitle">{userName}</span>
         </li>
       </ul>
+      <MessageModal
+        title="Registro exitoso"
+        show={showAlertModal}
+        content={alertMessage}
+      />
       <Modal
         show={showModal}
         operation={operation}
@@ -126,9 +134,16 @@ const NavBar = ({
         setEntityArrayDelete={setEntityArrayDelete}
         setOperationResponse={setOperationResponse}
         editEntity={editEntity}
-        modalClose={() => {
+        modalClose={(alertMessage) => {
           setEditEntity(null);
           setShowModal(false);
+          if (typeof alertMessage === "string") {
+            setAlertMessage(alertMessage);
+            setShowAlertModal(true);
+            setTimeout(() => {
+              setShowAlertModal(false);
+            }, 3000);
+          }
         }}
       />
     </div>
