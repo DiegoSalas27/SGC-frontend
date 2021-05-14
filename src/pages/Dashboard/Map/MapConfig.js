@@ -80,12 +80,17 @@ export class CustomMap {
     });
   }
 
-  async showTruckRoutes2(trucks){
-    var directionsService = this.googleMap.DirectionsService;
-    var directionsDisplay = this.googleMaps.DirectionsRenderer;
-    
-    directionsDisplay.setMap(map);
-    
+  async showTruckRoutes2(trucks) {
+    debugger;
+    var directionsService = new window.google.maps.DirectionsService();
+    var directionsDisplay = new window.google.maps.DirectionsRenderer();
+
+    // this.googleMap.data.map
+
+    // new window.google.maps
+
+    directionsDisplay.setMap(this.googleMap);
+
     var data = trucks;
 
     console.log(data);
@@ -94,30 +99,32 @@ export class CustomMap {
   }
 
   calculateAndDisplayRoute(directionsService, directionsDisplay, data) {
-       
-    for(var j = 0; j < data.length; ++j){
-
+    for (var j = 0; j < data.length; ++j) {
       console.log(data[j]);
 
       var len = Object.keys(data[j].names_route).length;
 
-      for(var i = 0; i < len - 1; ++i){
-        directionsService.route({
-          origin: data[j].names_route[i],
-          destination: data[j].names_route[i + 1],
-          travelMode: 'DRIVING'
-          }, function(response, status) {
-          if (status === 'OK') {
-            directionsDisplay.setDirections(response);
-          } else {
-            window.alert('Directions request failed due to ' + status);
+      for (var i = 0; i < len - 1; ++i) {
+        directionsService.route(
+          {
+            origin: data[j].names_route[i],
+            destination: data[j].names_route[i + 1],
+            travelMode: "DRIVING",
+          },
+          function (response, status) {
+            if (status === "OK") {
+              directionsDisplay.setDirections(response);
+            } else {
+              window.alert("Directions request failed due to " + status);
+            }
           }
-        });
+        );
       }
     }
   }
 
   async showTruckRoutes(trucks) {
+    console.log(trucks);
     // send tracks currently in the database with their ids, license_plate, driver, capacity and current garbashe volume
     // send trash currently in the database with their ids, capacity and current garbashe volume, coordinates
 

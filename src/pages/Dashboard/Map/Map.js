@@ -5,6 +5,7 @@ import axios from "../../../axios";
 import "./Map.css";
 import { SocketContext } from "../../../context/SocketContext";
 import { useState } from "react";
+import MessageModal from "../../../components/Modal/MessageModal";
 
 const puntoInicial = {
   lng: 5,
@@ -15,6 +16,8 @@ const puntoInicial = {
 const Map = ({ showRoute, user }) => {
   const [map, setMap] = useState(null);
   const { socket } = useContext(SocketContext);
+  const [showAlertModal, setShowAlertModal] = useState(null);
+  const decoded = jwt_decode(localStorage.getItem("jwtToken"));
 
   useEffect(() => {
     setMap(new CustomMap("map"));
@@ -30,7 +33,14 @@ const Map = ({ showRoute, user }) => {
       socket.emit("marcadores-activos", {});
       socket.on("marcadores-activos", (marcadores) => {
         for (const key of Object.keys(marcadores)) {
-          map.addMarker(marcadores[key], "truck", key);
+          if (decoded.rol_id === 1) {
+            map.addMarker(marcadores[key], "truck", key);
+          } else if (
+            decoded.rol_id === 2 &&
+            decoded.id === marcadores[key].id
+          ) {
+            map.addMarker(marcadores[key], "truck", key);
+          }
         }
       });
     }
@@ -41,11 +51,14 @@ const Map = ({ showRoute, user }) => {
 
   // Escuchar como fiscalizador nuevos de conductores que se conectan
   useEffect(() => {
-    const decoded = jwt_decode(localStorage.getItem("jwtToken"));
-    if (decoded.rol_id === 1 && showRoute) {
+    if (showRoute) {
       socket.on("marcador-nuevo", (marcador) => {
         if (map) {
-          map.addMarker(marcador, "truck", marcador.id);
+          if (decoded.rol_id === 1) {
+            map.addMarker(marcador, "truck", marcador.id);
+          } else if (decoded.rol_id === 2 && decoded.id === marcador.id) {
+            map.addMarker(marcador, "truck", marcador.id);
+          }
         }
       });
     }
@@ -56,11 +69,14 @@ const Map = ({ showRoute, user }) => {
 
   // Mover marcador mediante sockets
   useEffect(() => {
-    const decoded = jwt_decode(localStorage.getItem("jwtToken"));
-    if (decoded.rol_id === 1 && showRoute) {
+    if (showRoute) {
       socket.on("marcador-actualizado", (marcador) => {
         if (map) {
-          map.updateMarker(marcador, marcador.id);
+          if (decoded.rol_id === 1) {
+            map.updateMarker(marcador, marcador.id);
+          } else if (decoded.rol_id === 2 && decoded.id === marcador.id) {
+            map.updateMarker(marcador, marcador.id);
+          }
         }
       });
     }
@@ -73,7 +89,11 @@ const Map = ({ showRoute, user }) => {
   useEffect(() => {
     if (map && showRoute) {
       socket.on("marcador-eliminar", (id) => {
-        map.deleteMarker(id);
+        if (decoded.rol_id === 1) {
+          map.deleteMarker(id);
+        } else if (decoded.rol_id === 2 && decoded.id === id) {
+          map.deleteMarker(id);
+        }
       });
     }
     return () => {
@@ -119,25 +139,42 @@ const Map = ({ showRoute, user }) => {
       console.log("YO ENVIO", json_drivers);
       console.log("TACHOS", json_locations);
 
-      const response = await axios.post("/collectionPoints/optimize", {
-        json_locations: JSON.stringify(json_locations),
-        json_drivers: JSON.stringify(json_drivers),
-      });
+      try {
+        const response = await axios.post("/collectionPoints/optimize", {
+          json_locations: JSON.stringify(json_locations),
+          json_drivers: JSON.stringify(json_drivers),
+        });
 
-      console.log(response);
+        console.log(response);
 
-      if (user && user.rol_id === 2) {
-        // if you are the driver, you can only see yourself
-        response.data.response.trucks = response.data.response.trucks.filter(
-          (truck) => truck.id === user.id
-        );
+        if (user && user.rol_id === 2) {
+          // if you are the driver, you can only see yourself
+          response.data.response.trucks = response.data.response.trucks.filter(
+            (truck) => truck.id === user.id
+          );
+        }
+
+        map.showTruckRoutes(response.data.response.trucks);
+      } catch (err) {
+        setShowAlertModal(true);
+        setTimeout(() => {
+          setShowAlertModal(false);
+        }, 3000);
+        throw new Error("Ha ocurrido un error: ", err);
       }
-
-      map.showTruckRoutes(response.data.response.trucks);
     }
   }
 
-  return <div id="map" className="map"></div>;
+  return (
+    <>
+      <div id="map" className="map"></div>
+      <MessageModal
+        show={showAlertModal}
+        title="Error"
+        content="Error de conexión"
+      />{" "}
+    </>
+  );
 };
 
 export default Map;

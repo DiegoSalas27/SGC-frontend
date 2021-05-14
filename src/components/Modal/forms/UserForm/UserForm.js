@@ -203,7 +203,7 @@ const UserForm = ({
               40,
               "El nombre no puede contener más de 40 caracteres de texto"
             )
-            .matches(/^[A-Za-z]+$/, "El nombre solo puede contener caracteres")
+            .matches(/^[A-Za-z ]+$/, "El nombre solo puede contener caracteres")
             .required("Este campo es obligatorio"),
           apellido: Yup.string()
             .max(
@@ -220,9 +220,9 @@ const UserForm = ({
             .max(8, "El dni debe contener 8 números")
             .required("Este campo es obligatorio"),
           fecha_nacimiento: Yup.date()
-            .min(
+            .max(
               new Date("01-01-2002"),
-              "La fecha de nacimiento debe ser mayor a 2002"
+              "La fecha de nacimiento debe ser menor a 2002"
             )
             .required("Este campo es obligatorio"),
         })}

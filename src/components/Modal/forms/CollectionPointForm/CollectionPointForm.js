@@ -71,9 +71,9 @@ const CollectionForm = ({
       validationSchema={Yup.object({
         name: Yup.string()
           .required("Este campo es obligatorio")
-          .min(
+          .max(
             40,
-            "El nombre de punto de acopio debe contener por lo menos 40 caracteres"
+            "El nombre de punto de acopio debe contener como máximo 40 caracteres"
           ),
         longitude: Yup.string().required("Este campo es obligatorio"),
         latitude: Yup.string().required("Este campo es obligatorio"),

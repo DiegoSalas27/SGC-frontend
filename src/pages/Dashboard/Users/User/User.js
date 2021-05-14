@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import Edit from '../../../../assets/img/edit.png'
-import { rol } from '../../../../utils/constants';
-import user from '../../../../assets/img/user.png';
-import './User.css';
+import { useState } from "react";
+import Edit from "../../../../assets/img/edit.png";
+import { rol } from "../../../../utils/constants";
+import user from "../../../../assets/img/user.png";
+import "./User.css";
 
 const User = ({
   id,
@@ -17,19 +17,18 @@ const User = ({
   rol_id,
   setEditEntity,
   addUser,
-  }) => {
-
+}) => {
   const [check, setCheck] = useState(false);
 
   function setCheckBox() {
     setCheck(!check);
     addUser(id, !check);
   }
-  
+
   return (
     <>
       <div className="user">
-        <img className="entityIconUser" src={user} alt="user"/>
+        <img className="entityIconUser" src={user} alt="user" />
         <div className="user-info">
           <h3>{`${nombre} ${apellido}`}</h3>
           <div>
@@ -38,7 +37,7 @@ const User = ({
           </div>
           <div>
             <span>Fecha de nacimiento: </span>
-            <span>{fecha_nacimiento}</span>
+            <span>{new Date(fecha_nacimiento).toLocaleDateString()}</span>
           </div>
           <div>
             <span>DNI: </span>
@@ -48,7 +47,7 @@ const User = ({
             <span>Rol: </span>
             <span>{rol[rol_id]}</span>
           </div>
-          { licencia_de_conducir && (
+          {licencia_de_conducir && (
             <div>
               <span>Licencia: </span>
               <span>{licencia_de_conducir}</span>
@@ -56,8 +55,14 @@ const User = ({
           )}
         </div>
         <div className="options">
-          <input type="checkbox" name={`check${id}`} checked={check} onChange={setCheckBox} /> &nbsp;&nbsp;
-          <img onClick={() => setEditEntity(id)} src={Edit} alt=""/>
+          <input
+            type="checkbox"
+            name={`check${id}`}
+            checked={check}
+            onChange={setCheckBox}
+          />{" "}
+          &nbsp;&nbsp;
+          <img onClick={() => setEditEntity(id)} src={Edit} alt="" />
         </div>
       </div>
     </>
