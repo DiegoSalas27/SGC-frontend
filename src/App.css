@@ -1,18 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
 * {
   box-sizing: border-box;
   margin: 0px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 html {
-  min-height:100%;/* make sure it is at least as tall as the viewport */
-  position:relative;
+  min-height: 100%; /* make sure it is at least as tall as the viewport */
+  position: relative;
 }
 
-body{
-  height:100%; /* force the BODY element to match the height of the HTML element */
+body {
+  height: 100%; /* force the BODY element to match the height of the HTML element */
 }
 .app {
   position: absolute;
@@ -26,7 +26,7 @@ body{
   background-size: cover;
 }
 
- /* forms */
+/* forms */
 
 .authForm {
   margin-left: 300px;
@@ -48,10 +48,10 @@ body{
   font-size: 0.8em;
 }
 
- /* end forms */
+/* end forms */
 
 .link-text {
-  color: #00A3FF;
+  color: #00a3ff;
   cursor: pointer;
 }
 
@@ -59,7 +59,32 @@ body{
   font-size: 14px;
 }
 
-input:focus, button:focus, button:active {
+@media (max-width: 414px) {
+  .subtitle {
+    position: absolute;
+    top: 50px;
+    font-size: 10px;
+  }
+
+  .name {
+    display: none;
+  }
+
+  .admincell{
+    margin-left: -60%;
+    margin-top: -30px !important;
+  }
+  
+  .camion{
+    width: 70% !important;
+    height: 50% !important;
+  }
+}
+
+
+input:focus,
+button:focus,
+button:active {
   outline: 0;
 }
 
@@ -87,10 +112,10 @@ input:focus, button:focus, button:active {
 
 .logoBar {
   position: absolute;
-	top: 50px;
-	bottom: 13%;
-	left: 0;
-	right: 420px;
+  top: 50px;
+  bottom: 13%;
+  left: 0;
+  right: 420px;
   margin: auto;
   height: 600px;
   width: 280px;
@@ -132,11 +157,11 @@ input:focus, button:focus, button:active {
 
 .center {
   position: absolute;
-	top: 50px;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	margin: auto;
+  top: 50px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
 .h-500 {

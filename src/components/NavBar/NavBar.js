@@ -2,7 +2,7 @@ import { useLocation } from "react-router";
 import { useEffect, useState } from "react";
 import user from "../../assets/img/user.png";
 import Modal from "../Modal/Modal";
-import "./NavBar.css";
+import "./NavBar.scss";
 import MessageModal from "../Modal/MessageModal";
 
 const NavBar = ({
@@ -72,6 +72,7 @@ const NavBar = ({
         setShowCrudButtons(false);
         break;
       }
+      default: break;
     }
   }
 
@@ -85,7 +86,7 @@ const NavBar = ({
       <ul>
         <li>
           <p>{sectionTitle}</p>
-          <span className="subtitle">Bienvenido {userName}</span>
+          <span className="subtitle name">Bienvenido {userName}</span>
         </li>
         {showCrudButtons && (
           <div className="navButtons">
@@ -111,7 +112,7 @@ const NavBar = ({
           </div>
         )}
         {showWatchRoute && (
-          <div className="navButtons">
+          <div className="navButtons recorrido">
             <button onClick={() => setRoute(true)}>Ver recorrido</button>
           </div>
         )}

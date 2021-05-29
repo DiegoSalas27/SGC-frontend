@@ -1,0 +1,99 @@
+.navbar-container {
+  position: fixed;
+  top: 0;
+  background: #fff;
+  box-shadow: 21.12px -17px 21px #8888;
+  margin-left: 140px;
+  width: calc(100vw - 140px);
+  height: 140px;
+  border-bottom: #eaeaea 1px solid;
+  z-index: 1;
+  padding-left: 10%;
+
+  @media (max-width: 414px) {
+    margin-left: 0px;
+    width: 100vw;
+    height: 80px;
+  }
+}
+
+li p {
+  @media (max-width: 414px) {
+    font-size: 15px !important;
+  }
+}
+
+.recorrido {
+  @media (max-width: 414px) {
+    height: 300px;
+    position: absolute;
+    position: absolute;
+    top: -40px;
+    left:30%;
+    margin-left:-20px;
+  }
+}
+
+.navbar-container ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  height: 100%;
+  padding: 0 40px;
+  text-align: center;
+}
+
+.navbar-container ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.navbar-container ul li:first-child {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.navbar-container ul li:first-child * {
+  margin: 5px 0;
+  text-align: left;
+}
+
+.navbar-container ul li * {
+  margin: 12px 0;
+}
+
+.navbar-container ul li img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.navbar-container ul li p {
+  font-size: 30px;
+  display: block;
+  margin: auto;
+}
+
+.navButtons {
+  display: flex;
+  align-items: center;
+}
+
+.navButtons button {
+  margin: 0 30px;
+  color: #fff;
+  outline: 0;
+  border: none;
+  background: #60d860;
+  border-radius: 7%;
+  padding: 10px 20px;
+  transition: all 1s;
+  cursor: pointer;
+}
+
+.navButtons button:hover {
+  background: green;
+}

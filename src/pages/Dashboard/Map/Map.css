@@ -6,3 +6,11 @@
   right: 5%;
   text-align: center;
 }
+
+@media (max-width: 414px) {
+  .map{
+    margin: 0 20px;
+    top: 0;
+    left: -50%;
+  }
+}
