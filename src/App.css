@@ -26,6 +26,8 @@ body {
   background-size: cover;
 }
 
+
+
 /* forms */
 
 .authForm {
@@ -78,6 +80,15 @@ body {
   .camion{
     width: 70% !important;
     height: 50% !important;
+  }
+
+  .authForm {
+    margin-left: 0 !important;
+    text-align: center;
+  }
+
+  .authForm input {
+    width: 80%;
   }
 }
 
@@ -166,6 +177,35 @@ button:active {
 
 .h-500 {
   min-height: 500px;
+}
+
+@media (max-width: 414px) {
+  .app {
+    width: 100% !important;
+    height: 100vh;
+  }
+
+  .logoBar {
+    display: none;
+  }
+
+  .section-container {
+    width: 80% !important;
+  }
+
+  .bottom-panel {
+    text-align: center;
+  }
+
+  .bottom-panel button{
+    margin-left: 40%;
+  }
+
+  .error {
+    text-align: center;
+    margin-left: 30px;
+    font-size: 10px;
+  }
 }
 
 /* maring */
